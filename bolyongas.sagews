@@ -1,4 +1,3 @@
-︠ebe74cf4-7595-4666-9a39-7b4caa79a9a9s︠
 
 import random
 
@@ -78,14 +77,4 @@ print "most visited place:", mxvisx,mxvisy,  "visited", mxvis, "times."
 print "Visited origin", ornum, "times"
 
 P.show(ymin=ymn*1.2-5, ymax=ymx*1.2+5, xmin=xmn*1.2-5,xmax=xmx*1.2+5,axes=True, aspect_ratio=1)
-︡361850ef-74ab-49c2-8120-ad05148b950b︡{"stdout":"It was furthest from origin at the 914 . step\n"}︡{"stdout":"most visited place: 57 66 visited 16 times.\n"}︡{"stdout":"Visited origin 1 times\n"}︡{"file":{"filename":"/home/user/.sage/temp/project-d794462b-5ebc-44cc-8c96-fd339505efa0/731/tmp_GEkOqd.svg","show":true,"text":null,"uuid":"00c7952b-59d4-4495-bc19-335d0fc628a4"},"once":false}︡{"done":true}︡
-︠0df69c18-6446-4413-b0ac-218fbabb0451︠
-
-
-
-
-
-
-
-
 
