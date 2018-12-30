@@ -1,66 +1,65 @@
 from sage.plot.plot3d.shapes import Text
 from sage.plot.plot3d.shapes import Sphere
 from sage.plot.plot3d.shapes2 import Line
-from sage.plot.misc import get_matplotlib_linestyle
+from sage.plot.plot3d.shapes import Text
+mol_alanine = Graphics()
+temp = Graphics()
 
-get_matplotlib_linestyle(':', return_type='short')
+hydrogens = [[2.1243,-0.0920,1.6298],[-1.5376,-1.1552,-1.6934],[2.0613,0.6335,0.1718],[-0.0277,-1.0425,1.3783],[0.0733,1.1716,2.5550],[-0.0396,2.0418,1.0151],[-1.3991,1.0613,1.5830]]
+nitrogens = [[1.7374,-0.1422,0.7112]]
+oxygens = [[-0.0965,0.5316,-1.5533],[-1.2271,-1.1715,-0.7934]]
+carbons = [[0.2575,-0.1205,0.8106],[-0.3039,1.1050,1.5253],[-0.3219,-0.1861,-0.5965]]
 
-S = Sphere(2, color='gray').translate(2.1243*10,-0.0920*10,1.6298*10)
-s2 = Sphere(3, color='blue').translate(1.7374*10,-0.1422*10,0.7112*10)
-s3 = Sphere(2, color='gray').translate(2.0613*10,0.6335*10,0.1718*10)
-s4 = Sphere(3, color='yellow').translate(0.2575*10,-0.1205*10,0.8106*10)
-s5 = Sphere(2, color='gray').translate(-0.0277*10,-1.0425*10,1.3783*10)
-s6 = Sphere(3, color='yellow').translate(-0.3039*10,1.1050*10,1.5253*10)
-s7 = Sphere(2, color='gray').translate(0.0733*10,1.1716*10,2.5550*10)
-s8 = Sphere(2, color='gray').translate(-0.0396*10,2.0418*10,1.0151*10)
-s9 = Sphere(2, color='gray').translate(-1.3991*10,1.0613*10,1.5830*10)
-s10 = Sphere(3, color='yellow').translate(-0.3219*10,-0.1861*10,-0.5965*10)
-s11 = Sphere(3, color='red').translate(-0.0965*10,0.5316*10,-1.5533*10)
-s12 = Sphere(3, color='red').translate(-1.2271*10,-1.1715*10,-0.7934*10)
-s13 = Sphere(2, color='gray').translate(-1.5376*10,-1.1552*10,-1.6934*10)
-
-L = Line([(2.1243*10,-0.0920*10,1.6298*10),(1.7374*10,-0.1422*10,0.7112*10)], color="black")
-l2 = Line([(1.7374*10,-0.1422*10,0.7112*10),(2.0613*10,0.6335*10,0.1718*10)], color="black")
-l3 = Line([(0.2575*10,-0.1205*10,0.8106*10),(-0.0277*10,-1.0425*10,1.3783*10)], color="black")
-l4 = Line([(-0.3039*10,1.1050*10,1.5253*10),(0.0733*10,1.1716*10,2.5550*10)], color="black")
-l5 = Line([(-0.3039*10,1.1050*10,1.5253*10),(-0.0396*10,2.0418*10,1.0151*10)], color="black")
-l6 = Line([(-0.3039*10,1.1050*10,1.5253*10),(-1.3991*10,1.0613*10,1.5830*10)], color="black")
-l7 = Line([(-1.2271*10,-1.1715*10,-0.7934*10),(-1.5376*10,-1.1552*10,-1.6934*10)], color="black")
-l8 = Line([(-0.3219*10,-0.1861*10,-0.5965*10),(-0.0965*10,0.5316*10,-1.5533*10)], color="green")
-l9 = Line([(-0.3219*10,-0.1861*10,-0.5965*10),(-1.2271*10,-1.1715*10,-0.7934*10)], color="black")
-l10 = Line([(-0.3219*10,-0.1861*10,-0.5965*10),(0.2575*10,-0.1205*10,0.8106*10)], color="black")
-l11 = Line([(-0.3039*10,1.1050*10,1.5253*10),(0.2575*10,-0.1205*10,0.8106*10)], color="black")
-l12 = Line([(0.2575*10,-0.1205*10,0.8106*10),(1.7374*10,-0.1422*10,0.7112*10)], color="black")
-
-T = Text("H, 1.00794 u ± 0.00001 u").translate(2.1243*10,-0.0920*10,1.6298*10+3)
-t2 = Text("H, 1.00794 u ± 0.00001 u").translate(2.0613*10,0.6335*10,0.1718*10+3)
-t3 = Text("H, 1.00794 u ± 0.00001 u").translate(-0.0277*10,-1.0425*10,1.3783*10+3)
-t4 = Text("H, 1.00794 u ± 0.00001 u").translate(0.0733*10,1.1716*10,2.5550*10+3)
-t5 = Text("H, 1.00794 u ± 0.00001 u").translate(-0.0396*10,2.0418*10,1.0151*10+3)
-t6 = Text("H, 1.00794 u ± 0.00001 u").translate(-1.3991*10,1.0613*10,1.5830*10+3)
-t7 = Text("H, 1.00794 u ± 0.00001 u").translate(-1.5376*10,-1.1552*10,-1.6934*10+3)
-
-t8 = Text("C, 12.0107 u ± 0.0008 u").translate(0.2575*10,-0.1205*10,0.8106*10+3)
-t9 = Text("C, 12.0107 u ± 0.0008 u").translate(-0.3039*10,1.1050*10,1.5253*10+3)
-t10 = Text("C, 12.0107 u ± 0.0008 u").translate(-0.3219*10,-0.1861*10,-0.5965*10+3)
-
-t11 = Text("N, 14.0067 u ± 0.0001 u").translate(1.7374*10,-0.1422*10,0.7112*10+3)
-
-t12 = Text("O, 14.0067 u ± 0.0001 u").translate(-0.0965*10,0.5316*10,-1.5533*10+3)
-t13 = Text("O, 15.999 u").translate(-1.2271*10,-1.1715*10,-0.7934*10+3)
-
-S += s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9 + s10 + s11 + s12 + s13
-S += L + l2 + l3 + l4 + l5 + l6 + l7 + l8 + l9 + l10 +l11 + l12
-S += T + t2 + t3 + t4 + t5 + t6 + t7 +t8 + t9 + t10 + t11 + t12 + t13
-
-S.show(spin=1)
+connections = []
+connections.append([hydrogens[0],nitrogens[0]])
+connections.append([nitrogens[0], hydrogens[2]])
+connections.append([carbons[0], hydrogens[3]])
+connections.append([carbons[1], hydrogens[4]])
+connections.append([carbons[1], hydrogens[5]])
+connections.append([carbons[1], hydrogens[6]])
+connections.append([oxygens[1], hydrogens[1]])
+connections.append([carbons[2], oxygens[0]])
+connections.append([carbons[2], oxygens[1]])
+connections.append([carbons[2], carbons[0]])
+connections.append([carbons[1], carbons[0]])
+connections.append([carbons[0], nitrogens[0]])
 
 
+for x in range(len(hydrogens)):
+    hydrogens[x][0] = hydrogens[x][0]*10
+    hydrogens[x][1] = hydrogens[x][1]*10
+    hydrogens[x][2] = hydrogens[x][2]*10
 
+for x in range(len(nitrogens)):
+    nitrogens[x][0] = nitrogens[x][0]*10
+    nitrogens[x][1] = nitrogens[x][1]*10
+    nitrogens[x][2] = nitrogens[x][2]*10
 
+for x in range(len(oxygens)):
+    oxygens[x][0] = oxygens[x][0]*10
+    oxygens[x][1] = oxygens[x][1]*10
+    oxygens[x][2] = oxygens[x][2]*10
 
+for x in range(len(carbons)):
+    carbons[x][0] = carbons[x][0]*10
+    carbons[x][1] = carbons[x][1]*10
+    carbons[x][2] = carbons[x][2]*10
 
+for x in range(len(hydrogens)):
+    temp = Sphere(3, color='gray').translate(hydrogens[x][0],hydrogens[x][1],hydrogens[x][2])+Text("H,1.008 u").translate(hydrogens[x][0],hydrogens[x][1],hydrogens[x][2]+3)
+    mol_alanine = mol_alanine + temp
+for x in range(len(nitrogens)):
+    temp = Sphere(5, color='blue').translate(nitrogens[x][0],nitrogens[x][1],nitrogens[x][2]) + Text("N,14.007 u").translate(nitrogens[x][0],nitrogens[x][1],nitrogens[x][2]+5)
+    mol_alanine += temp
+for x in range(len(oxygens)):
+    temp = Sphere(5, color='red').translate(oxygens[x][0],oxygens[x][1],oxygens[x][2]) + Text("O,15.999 u").translate(oxygens[x][0],oxygens[x][1],oxygens[x][2]+5)
+    mol_alanine += temp
+for x in range(len(carbons)):
+    temp += Sphere(5, color='yellow').translate(carbons[x][0],carbons[x][1],carbons[x][2]) + Text("C,12.011 u").translate(carbons[x][0],carbons[x][1],carbons[x][2]+5)
+    mol_alanine += temp
 
+for x in range(len(connections)):
+    temp = Line([(connections[x][0][0],connections[x][0][1],connections[x][0][2]),(connections[x][1][0],connections[x][1][1],connections[x][1][2])], color="black")
+    mol_alanine += temp
 
-
-
+mol_alanine.show(spin=1,frame=False)
