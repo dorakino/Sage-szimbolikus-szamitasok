@@ -1,4 +1,3 @@
-
 import random
 
 P = plot(point((0, 0)))
@@ -70,11 +69,10 @@ for i in range(1000):
             mxvisx = x[0]
             mxvisy = x[1]
 
-    #P += point((q, r), color='red', pointsize=20)
     P += line([temp, (q,r)], color='purple')
-print "It was furthest from origin at the",fstep,". step"
-print "most visited place:", mxvisx,mxvisy,  "visited", mxvis, "times."
+P += point((mxvisx, mxvisy), color='red', pointsize=20)
+print "It was farthest from origin at the",fstep,". step"
+print "Most visited place: (", mxvisx ,",", mxvisy,  ") visited", mxvis, "times."
 print "Visited origin", ornum, "times"
 
 P.show(ymin=ymn*1.2-5, ymax=ymx*1.2+5, xmin=xmn*1.2-5,xmax=xmx*1.2+5,axes=True, aspect_ratio=1)
-
