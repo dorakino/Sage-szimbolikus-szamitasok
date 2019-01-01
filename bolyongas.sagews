@@ -1,3 +1,5 @@
+#Kinorányi Dóra, bolyongas
+
 import random
 
 P = plot(point((0, 0)))

@@ -1,81 +1,77 @@
-
-#shamir secret sharing
+#Kinorányi Dóra, shamir
 
 import random
 
-print("The secret i want to keep:")
-S=input()
-print("Number of pieces i want to divide my secret into:")
-n=input()
-print("the complete secret can be reconstructed from any combination of k pieces of data:")
-k=input()
-#print("the prime i use: (for example 57646075230343487)")
-#myPrime=input()
-myListRandom = [] #finally k-1 elements included
-myListPoints = [] #finally n elements (1,f(1)),.... included
-
-for i in range(k):
-    p = random.randint(1,21)*5
-    q = random.randint(1,21)*7
-    w = random.randint(1,21)*11
-    myListRandom.append(((p+q+w)*13)%myPrime)
-
-for i in range(1, n+1):
-    temp = S
-    for j in range(1, k):
-        temp = temp + i^j*myListRandom[j]
-    myListPoints.append([i,temp])
-print "single points i give to participants:"
-for i in range(n):
-    #print(i+1,(myListPoints[i][1])%myPrime)
-    print(i+1,(myListPoints[i][1]))
-
-
-print "Number of points i reconstruct the secret from:"
-k=input()
 class Point:
-    def __init__(self,i):
+    def __init__(self,i,a,b):
         self.i = i
-        self.x = 0
-        self.y = 0
+        self.a = 0
+        self.b = 0
 
-pointList = [Point(i) for i in range(0,k)]
-for point in pointList:
-    point.x = input()
-    point.y = input()
+class Shamir_div:
+    S = 0
+    n = 0
+    k = 0
+    myPrime = 0
+    myListRandom = []
+    myListPoints = []
+    
+    def __init__(self,S,n,k,myPrime):
+        self.myListRandom = []
+        self.myListPoints = []
+        self.S = S
+        self.n = n
+        self.k = k
+        self.myPrime = myPrime
+        
+    def division(self):
+        for i in range(self.k):
+            p = random.randint(1,21)*5
+            q = random.randint(1,21)*7
+            w = random.randint(1,21)*11
+            self.myListRandom.append(((p+q+w)*13)%self.myPrime)
 
-for i in range(k):
-    print "x coordinate of",i+1,". point:"
-    a = input()
-    print "y coordinate of",i+1,". point:"
-    b = input()
-    pointList.append([a,b])
-varList = []
-for i in range(k):
+        for i in range(1, self.n+1):
+            temp = self.S
+            for j in range(1,self.k):
+                temp = temp + i^j*self.myListRandom[j]
+            self.myListPoints.append([i,temp])
+        print "single points i give to participants:"
+        for i in range(self.n):
+            print(i+1,(self.myListPoints[i][1]))
+
+class Shamir_rec:
+    varList = []
+    poliList = []
+    pointList = []
     tempVarList = []
-    for j in range(k):
-        if i==j:
-            tempVarList.append(1)
-            tempVarList.remove(1)
-        else:
-            tempVarList.append(pointList[j])
-    varList.append(tempVarList)
+    k = 1
+    polynom = 0
+    def __init__(self,k,pointList):
+        self.k=k
+        self.pointList = pointList
+    def reconstruction(self):
+        for i in range(self.k):
+            for j in range(self.k):
+                if i==j:
+                    self.tempVarList.append(1)
+                    self.tempVarList.remove(1)
+                else:
+                    self.tempVarList.append(self.pointList[j])
+        self.varList.append(self.tempVarList)
 
-poliList = []
-#for i in range(k):
-for i in range(k):
-    tenyList = []
-    for j in range(k-1):
-        poliList.append(1)
-        temp = (0-(varList[i][j][0]))/((pointList[i][0])-(varList[i][j][0]))
-        poliList[i] = poliList[i]*temp
-polynom = 0
-for i in range(k):
-    polynom = polynom+pointList[i][1]*poliList[i]
-print "The secret is: ", polynom
+        for i in range(self.k):
+            for j in range(self.k-1):
+                self.poliList.append(1)
+                temp = (0-(self.varList[i][j][0]))/((self.pointList[i][0])-(self.varList[i][j][0]))
+                self.poliList[i] = self.poliList[i]*temp
+        for i in range(self.k):
+            self.polynom = self.polynom + self.pointList[i][1]*poliList[i]
+        print "The secret is: ", self.polynom
 
-
-
-
-
-
+        
+osztaly = Shamir_div(6, 3, 2,57646075230343487)
+osztaly.division()
+        
+a = Shamir_rec(3, [[1, 3620],[2, 7234],[3, 10848]])
+a.reconstruction()

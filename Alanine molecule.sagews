@@ -1,3 +1,5 @@
+#Kinorányi Dóra, molecule
+
 from sage.plot.plot3d.shapes import Text
 from sage.plot.plot3d.shapes import Sphere
 from sage.plot.plot3d.shapes2 import Line
