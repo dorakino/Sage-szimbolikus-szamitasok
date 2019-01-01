@@ -1,1 +1,1 @@
-this repo is for symbolical symbolical math class
+this repo is for symbolical symbolic math class
