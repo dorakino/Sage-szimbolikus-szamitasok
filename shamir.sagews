@@ -15,7 +15,7 @@ class Shamir_div:
     myPrime = 0
     myListRandom = []
     myListPoints = []
-    
+
     def __init__(self,S,n,k,myPrime):
         self.myListRandom = []
         self.myListPoints = []
@@ -23,7 +23,7 @@ class Shamir_div:
         self.n = n
         self.k = k
         self.myPrime = myPrime
-        
+
     def division(self):
         for i in range(self.k):
             p = random.randint(1,21)*5
@@ -41,24 +41,26 @@ class Shamir_div:
             print(i+1,(self.myListPoints[i][1]))
 
 class Shamir_rec:
+    k=0
+    pointList = []
+
     varList = []
     poliList = []
-    pointList = []
     tempVarList = []
-    k = 1
     polynom = 0
     def __init__(self,k,pointList):
         self.k=k
         self.pointList = pointList
     def reconstruction(self):
         for i in range(self.k):
+            self.tempVarList = []
             for j in range(self.k):
                 if i==j:
                     self.tempVarList.append(1)
                     self.tempVarList.remove(1)
                 else:
                     self.tempVarList.append(self.pointList[j])
-        self.varList.append(self.tempVarList)
+            self.varList.append(self.tempVarList)
 
         for i in range(self.k):
             for j in range(self.k-1):
@@ -66,12 +68,11 @@ class Shamir_rec:
                 temp = (0-(self.varList[i][j][0]))/((self.pointList[i][0])-(self.varList[i][j][0]))
                 self.poliList[i] = self.poliList[i]*temp
         for i in range(self.k):
-            self.polynom = self.polynom + self.pointList[i][1]*poliList[i]
+            self.polynom = self.polynom + self.pointList[i][1]*self.poliList[i]
         print "The secret is: ", self.polynom
 
-        
-osztaly = Shamir_div(6, 3, 2,57646075230343487)
+osztaly = Shamir_div(3144, 5, 4,57646075230343487)
 osztaly.division()
-        
-a = Shamir_rec(3, [[1, 3620],[2, 7234],[3, 10848]])
+
+a = Shamir_rec(2, [[1, 5341],[2, 7538],[4, 16508],[5, 19849]])
 a.reconstruction()
